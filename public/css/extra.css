@@ -1,0 +1,77 @@
+#wrapper-canvas {
+    width: 100vw;
+  }
+
+    .popup .popup-content {
+      background-color: rgba(1, 1, 1, 1);
+      height: 42.5rem;
+      font-size: 1.5rem;
+      line-height: 2rem;
+      position: absolute;
+      top: -25%;
+      transform: translateX(-150%);
+      transition: all 150ms ease-in-out;
+  } 
+
+   .popup.active {
+      position: absolute;
+      top: -25%;
+      transform: translateX(30%);
+      transition: all 150ms ease-in-out;
+  }
+
+  .popup.active .popup-content{
+    position: absolute;
+    top: -25%;
+    transform: translateX(30%);
+    transition: all 200ms ease-in-out;
+}
+
+@media (max-width:440px) {
+
+  #wrapper-canvas {
+    width: 100vw;
+    height: 100vh;
+  }
+  
+  .popup .popup-content {
+    background-color: rgba(1, 1, 1, 1);
+    width: 20rem;
+    height: 40rem;
+    font-size: 1.1rem;
+    border: 1px white solid;
+    position: absolute;
+    top: 0%;
+    transform: translateX(-150%);
+    transition: all 350ms ease-in-out;
+}  
+   
+.content-1 {
+  margin: 0 0;
+ }
+ .content-2 {
+  font-size: 1rem;
+ }
+
+   .content-4 {
+    font-size: 1rem;
+   }
+
+ .popup.active {
+    position: absolute;
+    top: 0%;
+    transform: translateX(0%);
+    transition: all 250ms ease-in-out;
+}
+
+.popup.active .popup-content{
+  position: absolute;
+  top: 0;
+  transform: translateX(0%);
+  transition: all 250ms ease-in-out;
+}
+
+}
+
+
+
