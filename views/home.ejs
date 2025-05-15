@@ -26,14 +26,14 @@
 
 </head>
 <body class="bg-[#111111]" id="body">
-      <script type="text/javascript">
+  <script type="text/javascript">
       const publicKey = "<%= publicKey %>";
-     (function(){
+      (function(){
       emailjs.init({
         publicKey: publicKey,
       });
-     })();
-    </script>
+      })();
+  </script>
   <script>
     const templateId = "<%= templateId  %>"
     const serviceId = "<%= serviceId  %>"
