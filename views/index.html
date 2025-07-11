@@ -9,13 +9,13 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Righteous&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="/style.css">
-    <link rel="stylesheet" href="/extra.css">
+    <link rel="stylesheet" href="../public/css/style.css">
+    <link rel="stylesheet" href="../public/css/extra.css">
     <!-- matter-js cdn links -->
     <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/matter-js/0.12.0/matter.min.js"></script>
     <script src="https://cdn/jsdelivr.net/npm/matter-wrap@0.2.0/build/matter-wrap.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/matter-attractors@0.1.6/build/matter-attractors.min.js"></script> -->
-    <script src="/extra.js" defer></script>
+    <script src="../public/js/extra.js" defer></script>
     <!-- <script src="/matter.js" defer></script> -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"/>
     <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
@@ -25,18 +25,6 @@
 
 </head>
 <body class="bg-[#111111]" id="body">
-  <script type="text/javascript">
-      const publicKey = "<%= publicKey %>";
-      (function(){
-      emailjs.init({
-        publicKey: publicKey,
-      });
-      })();
-  </script>
-  <script>
-    const templateId = "<%= templateId  %>"
-    const serviceId = "<%= serviceId  %>"
-  </script>
 
   <header class="header flex flex-row content-center w-[100vw] h-[8.5rem]" id="header">
          <img src="https://res.cloudinary.com/dm8u9jok6/image/upload/v1747034195/agni_txt_xdf8mj.png" class="z-20 pointer-events-auto logo w-[9.5rem] h-[4rem] mt-auto mb-auto ml-32 pt-[0.3rem] opacity-90 hover:opacity-100 scale-100 hover:scale-105">
@@ -89,6 +77,7 @@
         
             </div>
             </div>
+             
        </div>
     </div>
     <div class="picbox w-[50vw] h-[30.5rem]">

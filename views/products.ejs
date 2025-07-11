@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en" class="html">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AGNI</title>
+   <!-- <link rel="stylesheet" href="/style.css"> -->
+    <link rel="stylesheet" href="/style.css">
+</head>
+<body class="bg-[#111111]" id="body">
+
+
+  <header class="header flex flex-row w-[100vw] items-center justify-between gap-12 md:gap-0 h-[8.5rem]" id="header">
+         <div class="title drop-shadow-[0_0px_20px_rgba(255,123,0,0.75)] text-orange-500 text-3xl sm:text-5xl font-bold text-left  ml-24 w-auto">AGNI Store</div>
+         <!-- <div class="empty w-[29%] h-[8.5rem] pointer-events-none"></div> -->
+         <div class="icons-div flex flex-row justify-center items-center w-[35rem] h-[8.5rem]">
+             <a href="https://github.com/harshakumarn1" class="github z-20 pointer-events-auto flex flex-col justify-center"><svg class="opacity-80 hover:opacity-100 w-8 md:w-10 mx-4 md:mx-5 scale-1 hover:scale-110" stroke="white" fill="white" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--!Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2025 Fonticons, Inc.--><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3 .3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5 .3-6.2 2.3zm44.2-1.7c-2.9 .7-4.9 2.6-4.6 4.9 .3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3 .7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3 .3 2.9 2.3 3.9 1.6 1 3.6 .7 4.3-.7 .7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3 .7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3 .7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg></a>
+             <a href="https://www.linkedin.com/in/harsha-kumar-874a72286/" class="linkedin z-20 pointer-events-auto flex flex-col justify-center"><svg class="w-8 md:w-10 mx-4 md:mx-5 opacity-80 hover:opacity-100 scale-1 hover:scale-110" stroke="white" fill="white" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--!Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2025 Fonticons, Inc.--><path d="M100.3 448H7.4V148.9h92.9zM53.8 108.1C24.1 108.1 0 83.5 0 53.8a53.8 53.8 0 0 1 107.6 0c0 29.7-24.1 54.3-53.8 54.3zM447.9 448h-92.7V302.4c0-34.7-.7-79.2-48.3-79.2-48.3 0-55.7 37.7-55.7 76.7V448h-92.8V148.9h89.1v40.8h1.3c12.4-23.5 42.7-48.3 87.9-48.3 94 0 111.3 61.9 111.3 142.3V448z"/></svg></a>  
+             <a href="https://x.com/AgniHarsha15440" class="twitter z-20 pointer-events-auto flex flex-col justify-center"><svg class="w-8 md:w-10 mx-4 md:mx-5 opacity-80 hover:opacity-100 scale-1 hover:scale-110" stroke="white" fill="white" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--!Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2025 Fonticons, Inc.--><path d="M459.4 151.7c.3 4.5 .3 9.1 .3 13.6 0 138.7-105.6 298.6-298.6 298.6-59.5 0-114.7-17.2-161.1-47.1 8.4 1 16.6 1.3 25.3 1.3 49.1 0 94.2-16.6 130.3-44.8-46.1-1-84.8-31.2-98.1-72.8 6.5 1 13 1.6 19.8 1.6 9.4 0 18.8-1.3 27.6-3.6-48.1-9.7-84.1-52-84.1-103v-1.3c14 7.8 30.2 12.7 47.4 13.3-28.3-18.8-46.8-51-46.8-87.4 0-19.5 5.2-37.4 14.3-53 51.7 63.7 129.3 105.3 216.4 109.8-1.6-7.8-2.6-15.9-2.6-24 0-57.8 46.8-104.9 104.9-104.9 30.2 0 57.5 12.7 76.7 33.1 23.7-4.5 46.5-13.3 66.6-25.3-7.8 24.4-24.4 44.8-46.1 57.8 21.1-2.3 41.6-8.1 60.4-16.2-14.3 20.8-32.2 39.3-52.6 54.3z"/></svg></a>         
+             <a href="/" class="email z-20 pointer-events-auto flex flex-col justify-center"><svg class="w-8 md:w-10 mx-4 md:mx-5 opacity-80 hover:opacity-100 scale-1 hover:scale-110" stroke="white" fill="white" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--!Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2025 Fonticons, Inc.--><path d="M64 112c-8.8 0-16 7.2-16 16l0 22.1L220.5 291.7c20.7 17 50.4 17 71.1 0L464 150.1l0-22.1c0-8.8-7.2-16-16-16L64 112zM48 212.2L48 384c0 8.8 7.2 16 16 16l384 0c8.8 0 16-7.2 16-16l0-171.8L322 328.8c-38.4 31.5-93.7 31.5-132 0L48 212.2zM0 128C0 92.7 28.7 64 64 64l384 0c35.3 0 64 28.7 64 64l0 256c0 35.3-28.7 64-64 64L64 448c-35.3 0-64-28.7-64-64L0 128z"/></svg></a>     
+         </div>
+  </header>
+   
+  <section class="products relative">
+     
+     <div class="p-8 flex md:flex-row md:flex-wrap flex-col items-center md:justify-start md:items-start">
+
+         <div class="border-[1px] md:ml-[1.5rem] mb-20 md:mr-[3.5rem] border-white rounded-[5px] flex flex-col items-center w-[17rem] md:w-[25rem]">
+             <img class="w-[17rem] h-[20rem] md:w-[25rem] md:h-[30rem] mb-4" src="https://res.cloudinary.com/dm8u9jok6/image/upload/v1752246146/23_hfnodx.png" class="rounded-[15px]" alt="Loading...">
+             <div class="title text-center text-white text-[1.3rem] md:text-[1.8rem] mb-4 p-[0.5rem]">The Derma Co 1% Hyaluronic Sunscreen Aqua Gel SPF 50 PA++++ | For Oily, Dry, Acne-prone Skin |Ultra Lightweight Texture | Non-Greasy | No White Cast | Broad Spectrum Protection & Blue Light Protection | For Men & Women | 50 g </div>
+             <div class="description text-center mb-4 p-4 text-white text-[0.8rem] md:text-[1.1rem] w-[17rem] md:w-[25rem]">
+                 Wrinkle Treatment,Pore Treatment,Fine Line Treatment, Hydrating, Cleansing, Moisturizing, Bluelight Protection
+             </div>
+             <div class="price text-white text-2xl mb-4">Price: 438&#8377;</div>
+             <a href="https://amzn.to/40g7lAC"><button class="text-white product mb-4 bg-gradient-to-r from-orange-500 to-red-600 ... rounded-[2px] text-[1.1rem] h-10 px-6 font-semibold scale-100 hover:scale-110 duration-100">Buy Now</button></a>
+         </div>
+
+         <div class="border-[1px] mb-20 md:ml-[1.5rem] md:mr-[3.5rem] border-white rounded-[5px] flex flex-col items-center w-[17rem] md:w-[25rem]">
+             <img class="w-[17rem] h-[20rem] md:w-[25rem] md:h-[30rem] mb-4" src="https://res.cloudinary.com/dm8u9jok6/image/upload/v1752246145/22_fsc28f.png" class="rounded-[15px]" alt="Loading...">
+             <div class="title text-center text-white text-[1.3rem] md:text-[1.8rem] mb-4 p-[0.5rem]">The Derma Co Oil-Free Daily Face Moisturizer | With Hyaluronic Acid, Ceramides & Multivitamins | For Non-Greasy & Hydrated Skin | Prolonged Moisturization | Strengthens Skin Barrier | 100 g</div>
+             <div class="description text-center mb-4 p-4 text-white text-[0.8rem] md:text-[1.1rem] w-[17rem] md:w-[25rem]">
+                 PROLONGED MOISTURIZATION
+                 NO MORE GREASY SHINE
+                 STRENGTHENS SKIN BARRIER
+                 SAFE & EFFECTIVE FORMULATION
+             </div>
+             <div class="price text-white text-2xl mb-4">Price: 306&#8377;</div>
+             <a href="https://amzn.to/4lP81Fp"><button class="text-white product mb-4 bg-gradient-to-r from-orange-500 to-red-600 ... rounded-[2px] text-[1.1rem] h-10 px-6 font-semibold scale-100 hover:scale-110 duration-100">Buy Now</button></a>
+         </div>
+
+         <div class="border-[1px] mb-20 md:ml-[1.5rem] md:mr-[3.5rem] border-white rounded-[5px] flex flex-col items-center w-[17rem] md:w-[25rem]">
+             <img class="w-[17rem] h-[20rem] md:w-[25rem] md:h-[30rem] mb-4" src="https://res.cloudinary.com/dm8u9jok6/image/upload/v1752246145/24_n6yk1q.png" class="rounded-[15px]" alt="Loading...">
+             <div class="title text-center text-white text-[1.3rem] md:text-[1.8rem] mb-4 p-[0.5rem]">Minimalist 0.3% Ceramide Face Moisturizer For Barrier Repair & Deep Moisturization | Daily Repairing Face Moisturizing Cream | For Oily - Combination Skin | 50g</div>
+             <div class="description text-center mb-4 p-4 text-white text-[0.8rem] md:text-[1.1rem] w-[17rem] md:w-[25rem]">
+                 -> 0.3% active concentration of 5 skin essential ceramides along with Ursolic Acid for repairing damaged skin barrier <br>
+                 -> Formulated with Ceramide:Cholesterol:Fatty Acid in ratio of 3:1:1, which is proven to accelerate skin barrier recovery <br>
+                 -> Boosted with Madecassoside which is a powerful skin soothing ingredient <br>
+                 -> Aminobutyric Acid (GABA) & Aquaporin boosting ingredients for providing intense skin hydration <br>
+                 -> Formulated with iActive Ceramide, sourced from Kimika USA <br>
+             </div>
+             <div class="price text-white text-2xl mb-4">Price: 599&#8377;</div>
+             <a href="https://amzn.to/4nHRrcb"><button class="text-white product mb-4 bg-gradient-to-r from-orange-500 to-red-600 ... rounded-[2px] text-[1.1rem] h-10 px-6 font-semibold scale-100 hover:scale-110 duration-100">Buy Now</button></a>
+         </div>
+
+         <div class="border-[1px] mb-20 md:ml-[1.5rem] md:mr-[3.5rem] border-white rounded-[5px] flex flex-col items-center w-[17rem] md:w-[25rem]">
+             <img class="w-[17rem] h-[20rem] md:w-[25rem] md:h-[30rem] mb-4" src="https://res.cloudinary.com/dm8u9jok6/image/upload/v1752246144/25_p5pche.png" class="rounded-[15px]" alt="Loading...">
+             <div class="title text-center text-white text-[1.3rem] md:text-[1.8rem] mb-4 p-[0.5rem]">realme Buds 3 (3.5 mm) Wired Earphones with Mic (Black)</div>
+             <div class="description text-center mb-4 p-4 text-white text-[0.8rem] md:text-[1.1rem] w-[17rem] md:w-[25rem]">
+                 -> Experience Pure Audio Bliss: Let the realme Buds 3 transport you with incredibly pure audio, powered by dynamic 9.0 mm drivers that deliver enhanced bass to make you groove in style. <br>
+                 ->Designed for Your Lifestyle: Move freely through your city with the perfectly designed braided cable length, giving you the comfort and ease to stroll wherever you go <br>
+                 ->Effortless Control at Your Fingertips: Seamlessly manage your day – take calls, activate your voice assistant, and control your music playback all with the intuitive in-line controls. <br>
+                 ->Premium Comfort & Fit: Enjoy long-lasting comfort with the ergonomic half in-ear design, making these wired earphones a true masterpiece of form and function. <br>
+                 ->Peace of Mind & Easy Connectivity: Your purchase is covered by a 6-month warranty and they connect universally via a standard 3.5mm Jack. <br>
+             </div>
+             <div class="price text-white text-2xl mb-4">Price: 599&#8377;</div>
+             <a href="https://amzn.to/44qy5ko"><button class="text-white product mb-4 bg-gradient-to-r from-orange-500 to-red-600 ... rounded-[2px] text-[1.1rem] h-10 px-6 font-semibold scale-100 hover:scale-110 duration-100">Buy Now</button></a>
+         </div>
+
+         <div class="border-[1px] mb-20 md:ml-[1.5rem] md:mr-[3.5rem] border-white rounded-[5px] flex flex-col items-center w-[17rem] md:w-[25rem]">
+             <img class="w-[17rem] h-[20rem] md:w-[25rem] md:h-[30rem] mb-4" src="https://res.cloudinary.com/dm8u9jok6/image/upload/v1752246145/26_tuqgse.png" class="rounded-[15px]" alt="Loading...">
+             <div class="title text-center text-white text-[1.3rem] md:text-[1.8rem] mb-4 p-[0.5rem]">Vinson Senior Heavy Duty Cricket Stumps Set with Zipper Carry Bag for Kids & Adults, Color - Yellow & Black, Weight - 750 gm, No Water/Mud Needed to Increase The Weight of The Base.</div>
+             <div class="price text-white text-2xl mb-4">Price: 499&#8377;</div>
+             <a href="https://amzn.to/4lsGhXi"><button class="text-white product mb-4 bg-gradient-to-r from-orange-500 to-red-600 ... rounded-[2px] text-[1.1rem] h-10 px-6 font-semibold scale-100 hover:scale-110 duration-100">Buy Now</button></a>
+         </div>
+
+     </div>
+
+  </section>
+
+
+  <footer class="footer h-[10rem] w-[100vw] relative">
+     <div class="name w-[100%] h-[2rem] text-sm text-gray-300 flex flex-row justify-center items-center">
+         Harsha Kumar &copy; 2025
+     </div>
+     <div class="logo w-[100%] h-[4.8rem]  flex flex-row justify-center items-center">
+         <a href="#header"><img src="https://res.cloudinary.com/dm8u9jok6/image/upload/v1747034195/agni_txt_xdf8mj.png" class="w-[6.7rem] h-[2.7rem]"></a>
+     </div>
+     <div class="w-[100%] h-[3rem]  flex flex-row justify-center items-center">
+      <a href="https://github.com/harshakumarn1" ><svg class="opacity-80 hover:opacity-100 w-7 h-auto mx-4 scale-1 hover:scale-110" stroke="white" fill="white" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3 .3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5 .3-6.2 2.3zm44.2-1.7c-2.9 .7-4.9 2.6-4.6 4.9 .3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3 .7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3 .3 2.9 2.3 3.9 1.6 1 3.6 .7 4.3-.7 .7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3 .7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3 .7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg></a>
+      <a href="https://www.linkedin.com/in/harsha-kumar-874a72286/" ><svg class="w-7 mx-4 h-auto opacity-80 hover:opacity-100 scale-1 hover:scale-110" stroke="white" fill="white" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M100.3 448H7.4V148.9h92.9zM53.8 108.1C24.1 108.1 0 83.5 0 53.8a53.8 53.8 0 0 1 107.6 0c0 29.7-24.1 54.3-53.8 54.3zM447.9 448h-92.7V302.4c0-34.7-.7-79.2-48.3-79.2-48.3 0-55.7 37.7-55.7 76.7V448h-92.8V148.9h89.1v40.8h1.3c12.4-23.5 42.7-48.3 87.9-48.3 94 0 111.3 61.9 111.3 142.3V448z"/></svg></a>  
+      <a href="https://x.com/AgniHarsha15440" ><svg class="w-7 mx-4 h-auto opacity-80 hover:opacity-100 scale-1 hover:scale-110" stroke="white" fill="white" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path d="M459.4 151.7c.3 4.5 .3 9.1 .3 13.6 0 138.7-105.6 298.6-298.6 298.6-59.5 0-114.7-17.2-161.1-47.1 8.4 1 16.6 1.3 25.3 1.3 49.1 0 94.2-16.6 130.3-44.8-46.1-1-84.8-31.2-98.1-72.8 6.5 1 13 1.6 19.8 1.6 9.4 0 18.8-1.3 27.6-3.6-48.1-9.7-84.1-52-84.1-103v-1.3c14 7.8 30.2 12.7 47.4 13.3-28.3-18.8-46.8-51-46.8-87.4 0-19.5 5.2-37.4 14.3-53 51.7 63.7 129.3 105.3 216.4 109.8-1.6-7.8-2.6-15.9-2.6-24 0-57.8 46.8-104.9 104.9-104.9 30.2 0 57.5 12.7 76.7 33.1 23.7-4.5 46.5-13.3 66.6-25.3-7.8 24.4-24.4 44.8-46.1 57.8 21.1-2.3 41.6-8.1 60.4-16.2-14.3 20.8-32.2 39.3-52.6 54.3z"/></svg></a>         
+      <a href="#"><svg class="w-7 mx-4 h-auto opacity-80 hover:opacity-100 scale-1 hover:scale-105" stroke="white" fill="white" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path d="M64 112c-8.8 0-16 7.2-16 16l0 22.1L220.5 291.7c20.7 17 50.4 17 71.1 0L464 150.1l0-22.1c0-8.8-7.2-16-16-16L64 112zM48 212.2L48 384c0 8.8 7.2 16 16 16l384 0c8.8 0 16-7.2 16-16l0-171.8L322 328.8c-38.4 31.5-93.7 31.5-132 0L48 212.2zM0 128C0 92.7 28.7 64 64 64l384 0c35.3 0 64 28.7 64 64l0 256c0 35.3-28.7 64-64 64L64 448c-35.3 0-64-28.7-64-64L0 128z"/></svg></a>
+     </div>
+  </footer>
+  
+</body>
+</html>

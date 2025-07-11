@@ -21,4 +21,8 @@ app.get("/", (req, res) => {
     res.render("home.ejs",{publicKey, templateId, serviceId})  
 })
 
+app.get("/products", (req, res) => {
+    res.render("products.ejs")  
+})
+
 

@@ -1,0 +1,390 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+/* @import "tailwindcss"; */
+
+
+
+ html {
+  scroll-behavior: smooth;
+ } 
+
+ .hi,.harsha {
+    font-family: "Righteous", sans-serif;
+    font-weight: 500;
+    font-style: normal;
+  }
+
+  .image:hover {
+    box-shadow: 2px 2px 35px #f8852e;
+    transform: scale(1.01);
+  }
+
+  .swiper {
+  margin-top: 2rem;
+  width: 65%;
+  height: 20rem;
+}
+
+.swiper-slide {
+  text-align: center;
+  font-size: 20px;
+  background: #111;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.swiper-slide img {
+  display: block;
+  object-fit: cover;
+}
+
+  @media (max-width:440px) {
+
+    .header {
+      height: 5rem;
+      width: 100vw;
+    }
+
+    .header .logo {
+      width: 5.7rem;
+      height: 2.3rem;
+      margin-left: 1.5rem;
+      margin-bottom: 1.4rem;
+    }
+
+    .header .empty {
+      width: 0;
+      height: 5rem;
+    }
+
+    .header .icons-div {
+      padding-left: 2rem;
+      height: 5rem;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .header .github {
+      width: 1.7rem;
+      height: 1.7rem;
+      margin-right: 0.5rem;
+      margin-left: 0.5rem;
+    }
+    .header .linkedin{
+      width: 1.7rem;
+      height: 1.7rem;
+      margin-right: 0.5rem;
+      margin-left: 0.5rem;
+    }
+    .header .twitter {
+      width: 1.7rem;
+      height: 1.7rem;
+      margin-right: 0.5rem;
+      margin-left: 0.5rem;
+    }
+    .header .email {
+      width: 1.7rem;
+      height: 1.7rem;
+      margin-right: 0.5rem;
+      margin-left: 0.5rem;
+    }
+    
+    .section-1 {
+      width: 100vw;
+      height: 40rem;
+    }
+    
+    .section-1 .hi {
+      font-size: 1.5rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .section-1 .harsha {
+      font-size: 2.5rem;
+      margin-bottom: 0;
+    }
+
+    .section-1 .wd {
+      font-size: 1rem;
+    }
+
+    .pic-infobox {
+      width: 100%;
+      height: 37rem;
+      display: flex;
+      flex-direction: row;
+      flex-wrap: wrap;
+    }
+
+    .section-1 .infobox {
+      width: 100%;
+      height: 15rem;
+      height: auto;
+   }
+    
+    .section-1 .infobox-1 {
+      width: 100%;
+      margin-left: 2.5rem;
+      height: 15rem;
+      margin-bottom: 1.3rem;
+      padding-bottom: 0;
+    }
+
+    .aboutme {
+      width: 6.5rem;
+      height: 2rem;
+      font-size: 0.9rem;
+      padding: 0 0;
+      margin-top: 0;
+    }
+
+    .picbox {
+      width: 100%;
+      height: 20rem;
+    }
+
+    .picbox .image {
+      width: 18rem;
+      height: 18rem;
+      margin-left: 2.5rem;
+    }
+    
+   .da .skills {
+      margin-right: 3rem;
+    }
+
+  .section-2 {
+    width: 100vw;
+    height: 73rem;
+  }
+  
+  .section-2 .mainp {
+    font-size: 0.7rem;
+  }
+  .section-2 .skills {
+    width: 100%;
+    height: 66rem;
+    flex-wrap: wrap;
+    margin-top: 0.5rem;
+  }
+  .section-2 .frontend-div {
+    display: flex;
+    width: 100%;
+    padding-left: 0;
+    place-items: center ;
+    place-content: center;
+  }
+  .section-2 .frontend {
+    width: 80%;
+  }
+  .section-2 .backend-div {
+    display: flex;
+    width: 100%;
+    padding-left: 0;
+    place-items: center ;
+    place-content: center;
+  }
+  .section-2 .backend {
+    width: 80%;
+  }
+  .section-2 .database-div {
+    display: flex;
+    width: 100%;
+    padding-left: 0;
+    place-items: center ;
+    place-content: center;
+  }
+  .section-2 .database {
+    width: 80%;
+  }
+  .section-2 .tools-div {
+    display: flex;
+    width: 100%;
+    padding-left: 0;
+    place-items: center ;
+    place-content: center;
+  }
+  .section-2 .tools {
+    width: 80%;
+  }
+
+  .section-3  {
+    width: 100vw;
+    height: 43rem;
+  } 
+  .section-3 p {
+    font-size: 1.3rem;
+  }
+  .section-3 .projects {
+    width: 100%;
+    height: 39.5rem ;
+  }
+  .section-3 .vl {
+    width: 0.1rem;
+    height: 87%;
+    top: 12;
+    left: 90%;
+  }
+  .section-3 .hl1 {
+    height: 0.1rem;
+    width: 6rem;
+    top: 27%;
+    right: 10%;
+  }
+  .section-3 .hl2 {
+    height: 0.1rem;
+    width: 6.3rem;
+    top: 74%;
+    left: 64.5%;
+  }
+  .section-3 .lspan {
+    width: 20rem;
+    height: auto;
+    left: 5%;
+  }
+  .section-3 .li {
+    width: 20rem;
+    height: auto;
+  }
+  .section-3 .lii {
+    width: 15rem;
+    height: 9rem;
+  }
+  .section-3 .lp {
+    font-size: 0.7rem;
+    padding: 0 0;
+    margin-top: 1rem;
+  }
+  .section-3 .pspan {
+    width: 30rem;
+    height: auto;
+    top: 57%;
+    left: 7%;
+  }
+  .section-3 .pi {
+    width: 25rem;
+    height: auto;
+  }
+  .section-3 .pii {
+    width: 6.5rem;
+    height: 13.8rem;
+    top: 1%;
+    left: 30.8%;
+  }
+  .section-3 .pp {
+    font-size: 0.7rem;
+    padding: 0 10rem 0 3.5rem; 
+    margin-top: 1rem;
+  }
+  .section-4 {
+    width: 100vw;
+    height: 52rem;
+  }
+
+   .section-4 p {
+    font-size: 1.3rem;
+  }
+
+    .swiper {
+  margin-top: 2rem;
+  width: 85%;
+  margin-left: auto;
+  margin-right: auto;
+  height: 43rem;
+}
+
+.swiper-slide {
+  text-align: center;
+  font-size: 20px;
+  background: #111;
+}
+
+.swiper-slide img {
+  width: 12rem;
+  height: 12rem;
+  display: block;
+  position: absolute;
+  object-fit: cover;
+  top: 7%;
+  left: 23%;
+}
+
+.swiper-slide .pdiv {
+  position: absolute;
+  width: 80%;
+  left: 23%;
+  top: 45%;
+}
+
+.swiper-slide .mainp {
+  width: 15rem;
+  font-size: 1.2rem;
+}
+
+.swiper-slide .namep {
+  width: 15rem;
+  padding-right: 0;
+  font-size: 1.1rem;
+  font-weight: 600;
+}
+
+.swiper-slide .postp {
+  width: 15rem;
+  padding-right: 0;
+  font-size: 0.9rem;
+}
+
+.section-5 {
+  width: 100vw;
+  height: 58rem;
+}
+
+.section-5 .s5hdiv {
+  height: 5rem;
+  padding-top: 0.7rem;
+}
+.section-5 .s5hdiv div {
+  width: 12.5rem;
+  font-size: 1.5rem;
+  height: 3.5rem;
+}
+.section-5 .s5idiv {
+  width: 100%;
+  height: 20rem;
+}
+.section-5 .s5idiv img {
+  margin: 0;
+  height: 20rem;
+}
+.section-5 .form {
+  width: 100%;
+  height: 33rem;
+}
+
+.section-5 form {
+  margin-top: 3rem;
+}
+
+.footer {
+  height: 9rem;
+}
+
+.footer .logo {
+  height: 4rem;
+}
+.footer .logo a img {
+  height: 2.1rem;
+  width: auto;
+}
+.footer svg {
+  width: 1.5rem;
+}
+.footer .name {
+  font-size: 0.8rem;
+}
+
+}
+  
