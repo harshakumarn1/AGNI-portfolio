@@ -1,0 +1,174 @@
+import { useEffect, useCallback, useRef } from 'react'
+import gsap from 'gsap'
+import { ScrollTrigger } from 'gsap/ScrollTrigger'
+
+gsap.registerPlugin(ScrollTrigger)
+
+/**
+ * useScrollFrames
+ *
+ * Preloads a sequence of animation frames, renders them on a <canvas>,
+ * and wires up GSAP ScrollTrigger so scroll position maps to frame index.
+ * Scroll down = forward, scroll up = reverse — handled automatically by scrub.
+ *
+ * Configurable so it can drive both the pinned hero animation and the
+ * non-pinned section backgrounds (Skills / Projects / Contact).
+ *
+ * @param {React.RefObject<HTMLCanvasElement>} canvasRef
+ * @param {React.RefObject<HTMLElement>} sectionRef - The section element to trigger on
+ * @param {object} [config]
+ * @param {number} [config.frameCount=147]      - Number of frames in the sequence
+ * @param {string} [config.framePath='/hero-frames/ezgif-frame-'] - URL prefix for frames
+ * @param {boolean} [config.pin=true]           - Pin the section while animating
+ * @param {number} [config.scrub=0.5]           - ScrollTrigger scrub smoothing (seconds)
+ * @param {string} [config.scrollStart='top top'] - ScrollTrigger start position
+ * @param {string} [config.scrollEnd='+=300%']  - ScrollTrigger end position
+ */
+export default function useScrollFrames(canvasRef, sectionRef, config = {}) {
+  const {
+    frameCount = 147,
+    framePath = '/hero-frames/ezgif-frame-',
+    pin = true,
+    scrub = 0.5,
+    scrollStart = 'top top',
+    scrollEnd = '+=300%',
+  } = config
+
+  const imagesRef = useRef([])
+  const currentFrameRef = useRef(0)
+  const loadedCountRef = useRef(0)
+
+  /**
+   * Draw a specific frame onto the canvas, cover-fitting it
+   * similar to CSS `object-fit: cover`.
+   */
+  const render = useCallback((frameIndex) => {
+    const canvas = canvasRef.current
+    const ctx = canvas?.getContext('2d')
+    const img = imagesRef.current[frameIndex]
+
+    if (!ctx || !img || !img.complete || img.naturalWidth === 0) return
+
+    // Contain-fit: show the full frame at original proportions, no cropping
+    const canvasW = canvas.width
+    const canvasH = canvas.height
+    const imgW = img.naturalWidth
+    const imgH = img.naturalHeight
+
+    const scale = Math.min(canvasW / imgW, canvasH / imgH)
+    const drawW = imgW * scale
+    const drawH = imgH * scale
+    const drawX = (canvasW - drawW) / 2
+    const drawY = (canvasH - drawH) / 2
+
+    ctx.clearRect(0, 0, canvasW, canvasH)
+    ctx.drawImage(img, drawX, drawY, drawW, drawH)
+
+    currentFrameRef.current = frameIndex
+  }, [canvasRef])
+
+  /**
+   * Size the canvas to match its container, accounting for device pixel ratio.
+   * Cap DPR at 2 to balance quality vs performance.
+   */
+  const resizeCanvas = useCallback(() => {
+    const canvas = canvasRef.current
+    if (!canvas) return
+
+    const dpr = Math.min(window.devicePixelRatio || 1, 2)
+    const rect = canvas.parentElement.getBoundingClientRect()
+
+    canvas.width = rect.width * dpr
+    canvas.height = rect.height * dpr
+
+    canvas.style.width = `${rect.width}px`
+    canvas.style.height = `${rect.height}px`
+
+    // Redraw the current frame at the new size
+    render(currentFrameRef.current)
+  }, [canvasRef, render])
+
+  useEffect(() => {
+    const canvas = canvasRef.current
+    const section = sectionRef.current
+    if (!canvas || !section) return
+
+    const images = []
+    let scrollTriggerInstance = null
+
+    // Builds a zero-padded frame URL, e.g. index 0 → "<framePath>001.jpg"
+    const getFrameSrc = (index) =>
+      `${framePath}${String(index + 1).padStart(3, '0')}.jpg`
+
+    // --- 1. Preload all frames ---
+    for (let i = 0; i < frameCount; i++) {
+      const img = new Image()
+      img.src = getFrameSrc(i)
+
+      img.onload = () => {
+        loadedCountRef.current++
+
+        // Draw the very first frame as soon as it's ready
+        if (i === 0) {
+          resizeCanvas()
+          render(0)
+        }
+      }
+
+      images.push(img)
+    }
+
+    imagesRef.current = images
+
+    // --- 2. Size the canvas ---
+    resizeCanvas()
+
+    // --- 3. Setup GSAP ScrollTrigger ---
+    const frameObj = { value: 0 }
+
+    scrollTriggerInstance = gsap.to(frameObj, {
+      value: frameCount - 1,
+      snap: 'value',       // Snap to whole frame numbers
+      ease: 'none',        // Linear mapping: scroll position ↔ frame
+      scrollTrigger: {
+        trigger: section,
+        start: scrollStart,
+        end: scrollEnd,
+        scrub,                      // Smooth catch-up (seconds)
+        pin,                        // Pin the section while animating (hero only)
+        anticipatePin: pin ? 1 : 0, // Smooth pin entry when pinning
+      },
+      onUpdate: () => {
+        const frameIndex = Math.round(frameObj.value)
+        // Only redraw if the frame actually changed
+        if (frameIndex !== currentFrameRef.current) {
+          render(frameIndex)
+        }
+      },
+    })
+
+    // --- 4. Handle window resize ---
+    window.addEventListener('resize', resizeCanvas)
+
+    // --- 5. Cleanup ---
+    return () => {
+      window.removeEventListener('resize', resizeCanvas)
+      if (scrollTriggerInstance) {
+        scrollTriggerInstance.scrollTrigger?.kill()
+        scrollTriggerInstance.kill()
+      }
+      imagesRef.current = []
+    }
+  }, [
+    canvasRef,
+    sectionRef,
+    render,
+    resizeCanvas,
+    frameCount,
+    framePath,
+    pin,
+    scrub,
+    scrollStart,
+    scrollEnd,
+  ])
+}
