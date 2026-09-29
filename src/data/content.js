@@ -79,16 +79,26 @@ export const projects = [
     tech: ['Node.js', 'Express', 'MongoDB', 'EJS'],
   },
   {
-    title: 'Weather App',
+    title: 'Enterprise Website',
     description:
-      'This App provides Current Weather information by taking City name as Input from the Users.',
-    link: '#',
+      'The website is designed to showcase facility management services and material supply solutions, helping customers explore services, products, and business offerings in one platform.',
+    link: 'https://eagle-enterprises.onrender.com',
     frameImage:
       'https://res.cloudinary.com/dm8u9jok6/image/upload/v1747034200/iphone_4_utbgvk.png',
-    screenshot:
-      'https://res.cloudinary.com/dm8u9jok6/image/upload/v1747034233/weather_app_dkkyf3.png',
+    screenshot: '/enterprise-website.png',
     type: 'mobile',
-    tech: ['HTML', 'CSS', 'JavaScript', 'API'],
+    tech: ['Node.js', 'Express', 'Javascript', 'EJS'],
+  },
+  {
+    title: 'SaaS ERP',
+    description:
+      'A SaaS-based ERP software designed to streamline and manage core business operations, including inventory, sales, purchases, customers and reporting through a centralized platform.',
+    link: 'https://supply-chain-saas-erp.vercel.app/login',
+    frameImage:
+      'https://res.cloudinary.com/dm8u9jok6/image/upload/v1747034212/harigurus_vr4nol.webp',
+    screenshot: '/saas-erp.png',
+    type: 'web',
+    tech: ['React', 'Python', 'PostgreSQL', 'FastAPI', 'TypeScript'],
   },
 ]
 

@@ -2,7 +2,8 @@ import { useEffect, useRef } from 'react'
 import gsap from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
 import { skills } from '../../data/content'
-import SectionBackground from './SectionBackground'
+import SectionHeader from '../common/SectionHeader'
+import SkillsBackground from './SkillsBackground'
 
 gsap.registerPlugin(ScrollTrigger)
 
@@ -20,36 +21,38 @@ export default function Skills() {
   const cardsRef = useRef([])
 
   useEffect(() => {
-    const cards = cardsRef.current
+    const ctx = gsap.context(() => {
+      const cards = cardsRef.current
 
-    cards.forEach((card, i) => {
-      if (!card) return
+      cards.forEach((card, i) => {
+        if (!card) return
 
-      gsap.fromTo(
-        card,
-        {
-          opacity: 0,
-          y: 60,
-          scale: 0.95,
-        },
-        {
-          opacity: 1,
-          y: 0,
-          scale: 1,
-          duration: 0.8,
-          ease: 'power3.out',
-          scrollTrigger: {
-            trigger: card,
-            start: 'top 85%',
-            end: 'top 50%',
-            toggleActions: 'play none none reverse',
+        gsap.fromTo(
+          card,
+          {
+            opacity: 0,
+            y: 60,
+            scale: 0.95,
           },
-          delay: i * 0.1,
-        }
-      )
-    })
+          {
+            opacity: 1,
+            y: 0,
+            scale: 1,
+            duration: 0.8,
+            ease: 'power3.out',
+            scrollTrigger: {
+              trigger: card,
+              start: 'top 85%',
+              end: 'top 50%',
+              toggleActions: 'play none none reverse',
+            },
+            delay: i * 0.1,
+          }
+        )
+      })
+    }, sectionRef)
 
-    return () => ScrollTrigger.getAll().forEach((t) => t.kill())
+    return () => ctx.revert()
   }, [])
 
   /* 3D tilt effect on hover via mouse tracking */
@@ -71,15 +74,11 @@ export default function Skills() {
 
   return (
     <section className="skills-section section" id="skills" ref={sectionRef}>
-      <SectionBackground
-        sectionRef={sectionRef}
-        framePath="/skills-frames/ezgif-frame-"
-        frameCount={99}
+      <SkillsBackground sectionRef={sectionRef} />
+      <SectionHeader
+        title="SKILLS"
+        subtitle="A collection of skills I have learnt from various projects and experiences."
       />
-      <h2 className="section-title">SKILLS</h2>
-      <p className="section-subtitle">
-        A collection of skills I have learnt from various projects and experiences.
-      </p>
 
       <div className="skills-grid">
         {skills.map((category, idx) => (
@@ -91,6 +90,10 @@ export default function Skills() {
             onMouseLeave={() => handleMouseLeave(cardsRef.current[idx])}
             style={{ transition: 'transform 0.15s ease-out, background 0.4s, border-color 0.4s, box-shadow 0.4s' }}
           >
+            {/* Travelling shining anticlockwise border light */}
+            <div className="skill-border-beam" aria-hidden="true" />
+            <div className="skill-card-glow" aria-hidden="true" />
+
             <h3 className="skill-card-title">{category.title}</h3>
             <div className="skill-icons">
               {category.items.map((item) => (

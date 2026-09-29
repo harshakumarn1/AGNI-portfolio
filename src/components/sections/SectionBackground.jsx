@@ -21,7 +21,10 @@ export default function SectionBackground({ sectionRef, framePath, frameCount, o
     frameCount,
     framePath,
     pin: false,
-    scrollStart: 'top bottom',
+    nativeSize: true,
+    nativeWidth: 1920,
+    nativeHeight: 1080,
+    scrollStart: 'center center',
     scrollEnd: 'bottom bottom',
   })
 

@@ -32,6 +32,9 @@ export default function useScrollFrames(canvasRef, sectionRef, config = {}) {
     scrub = 0.5,
     scrollStart = 'top top',
     scrollEnd = '+=300%',
+    nativeSize = false,
+    nativeWidth = 0,
+    nativeHeight = 0,
   } = config
 
   const imagesRef = useRef([])
@@ -49,23 +52,29 @@ export default function useScrollFrames(canvasRef, sectionRef, config = {}) {
 
     if (!ctx || !img || !img.complete || img.naturalWidth === 0) return
 
-    // Contain-fit: show the full frame at original proportions, no cropping
-    const canvasW = canvas.width
-    const canvasH = canvas.height
-    const imgW = img.naturalWidth
-    const imgH = img.naturalHeight
+    ctx.clearRect(0, 0, canvas.width, canvas.height)
 
-    const scale = Math.min(canvasW / imgW, canvasH / imgH)
-    const drawW = imgW * scale
-    const drawH = imgH * scale
-    const drawX = (canvasW - drawW) / 2
-    const drawY = (canvasH - drawH) / 2
+    if (nativeSize) {
+      // 1:1 rendering — no scaling, preserves original frame quality
+      ctx.drawImage(img, 0, 0)
+    } else {
+      // Contain-fit: show the full frame at original proportions, no cropping
+      const canvasW = canvas.width
+      const canvasH = canvas.height
+      const imgW = img.naturalWidth
+      const imgH = img.naturalHeight
 
-    ctx.clearRect(0, 0, canvasW, canvasH)
-    ctx.drawImage(img, drawX, drawY, drawW, drawH)
+      const scale = Math.min(canvasW / imgW, canvasH / imgH)
+      const drawW = imgW * scale
+      const drawH = imgH * scale
+      const drawX = (canvasW - drawW) / 2
+      const drawY = (canvasH - drawH) / 2
+
+      ctx.drawImage(img, drawX, drawY, drawW, drawH)
+    }
 
     currentFrameRef.current = frameIndex
-  }, [canvasRef])
+  }, [canvasRef, nativeSize])
 
   /**
    * Size the canvas to match its container, accounting for device pixel ratio.
@@ -75,18 +84,26 @@ export default function useScrollFrames(canvasRef, sectionRef, config = {}) {
     const canvas = canvasRef.current
     if (!canvas) return
 
-    const dpr = Math.min(window.devicePixelRatio || 1, 2)
-    const rect = canvas.parentElement.getBoundingClientRect()
+    if (nativeSize && nativeWidth && nativeHeight) {
+      // Use frame's native resolution — no DPR scaling needed
+      canvas.width = nativeWidth
+      canvas.height = nativeHeight
+      canvas.style.width = `${nativeWidth}px`
+      canvas.style.height = `${nativeHeight}px`
+    } else {
+      const dpr = Math.min(window.devicePixelRatio || 1, 2)
+      const rect = canvas.parentElement.getBoundingClientRect()
 
-    canvas.width = rect.width * dpr
-    canvas.height = rect.height * dpr
+      canvas.width = rect.width * dpr
+      canvas.height = rect.height * dpr
 
-    canvas.style.width = `${rect.width}px`
-    canvas.style.height = `${rect.height}px`
+      canvas.style.width = `${rect.width}px`
+      canvas.style.height = `${rect.height}px`
+    }
 
     // Redraw the current frame at the new size
     render(currentFrameRef.current)
-  }, [canvasRef, render])
+  }, [canvasRef, render, nativeSize, nativeWidth, nativeHeight])
 
   useEffect(() => {
     const canvas = canvasRef.current
@@ -170,5 +187,8 @@ export default function useScrollFrames(canvasRef, sectionRef, config = {}) {
     scrub,
     scrollStart,
     scrollEnd,
+    nativeSize,
+    nativeWidth,
+    nativeHeight,
   ])
 }

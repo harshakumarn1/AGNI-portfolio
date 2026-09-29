@@ -3,6 +3,7 @@ import { motion, AnimatePresence } from 'framer-motion'
 import gsap from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
 import { testimonials } from '../../data/content'
+import SectionHeader from '../common/SectionHeader'
 
 gsap.registerPlugin(ScrollTrigger)
 
@@ -81,10 +82,10 @@ export default function Testimonials() {
 
   return (
     <section className="testimonials-section section" id="testimonials" ref={sectionRef}>
-      <h2 className="section-title">TESTIMONIALS</h2>
-      <p className="section-subtitle">
-        What people I've worked with have to say.
-      </p>
+      <SectionHeader
+        title="TESTIMONIALS"
+        subtitle="What people I've worked with have to say."
+      />
 
       <div className="testimonials-carousel" style={{ perspective: '1200px' }}>
         <AnimatePresence mode="wait" custom={direction}>

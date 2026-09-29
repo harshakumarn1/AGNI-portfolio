@@ -3,7 +3,8 @@ import { motion } from 'framer-motion'
 import gsap from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
 import emailjs from '@emailjs/browser'
-import SectionBackground from './SectionBackground'
+import ContactBackground from './ContactBackground'
+import SectionHeader from '../common/SectionHeader'
 
 gsap.registerPlugin(ScrollTrigger)
 
@@ -58,12 +59,11 @@ export default function Contact() {
 
   return (
     <section className="contact-section section" id="contact" ref={sectionRef}>
-      <SectionBackground
-        sectionRef={sectionRef}
-        framePath="/contact-frames/ezgif-frame-"
-        frameCount={90}
+      <ContactBackground sectionRef={sectionRef} />
+      <SectionHeader
+        title="CONTACT"
+        subtitle="Have a project in mind or want to collaborate? Send a message!"
       />
-      <h2 className="section-title">CONTACT</h2>
 
       <div className="contact-container">
         <div className="contact-header">
