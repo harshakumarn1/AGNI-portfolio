@@ -5,57 +5,9 @@ import { ScrollTrigger } from 'gsap/ScrollTrigger'
 import { personalInfo } from '../../data/content'
 import ProfilePhoto3D from '../../canvas/ProfilePhoto3D'
 import HeroBackground from './HeroBackground'
+import AboutModal from '../ui/AboutModal'
 
 gsap.registerPlugin(ScrollTrigger)
-
-function AboutModal({ isOpen, onClose }) {
-  const { about } = personalInfo
-
-  return (
-    <AnimatePresence>
-      {isOpen && (
-        <motion.div
-          className="modal-overlay"
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          exit={{ opacity: 0 }}
-          transition={{ duration: 0.3 }}
-          onClick={onClose}
-        >
-          <motion.div
-            className="modal-content"
-            initial={{ opacity: 0, scale: 0.85, y: 50, rotateX: 8 }}
-            animate={{ opacity: 1, scale: 1, y: 0, rotateX: 0 }}
-            exit={{ opacity: 0, scale: 0.85, y: 50, rotateX: 8 }}
-            transition={{ duration: 0.45, ease: [0.16, 1, 0.3, 1] }}
-            onClick={(e) => e.stopPropagation()}
-            style={{ perspective: '800px' }}
-          >
-            <button className="modal-close" onClick={onClose}>
-              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512">
-                <path d="M376.6 84.5c11.3-13.6 9.5-33.8-4.1-45.1s-33.8-9.5-45.1 4.1L192 206 56.6 43.5C45.3 29.9 25.1 28.1 11.5 39.4S-3.9 70.9 7.4 84.5L150.3 256 7.4 427.5c-11.3 13.6-9.5 33.8 4.1 45.1s33.8 9.5 45.1-4.1L192 306 327.4 468.5c11.3 13.6 31.5 15.4 45.1 4.1s15.4-31.5 4.1-45.1L233.7 256 376.6 84.5z" />
-              </svg>
-            </button>
-
-            <h3 className="modal-title">ABOUT ME</h3>
-            <p className="modal-text">
-              {about.description}
-              <br /><br />
-              {about.extra}
-            </p>
-
-            <h3 className="modal-subtitle">EDUCATION</h3>
-            <p className="modal-education">
-              {about.education.degree}<br />
-              {about.education.university}<br />
-              Specialization — {about.education.specialization}
-            </p>
-          </motion.div>
-        </motion.div>
-      )}
-    </AnimatePresence>
-  )
-}
 
 const roles = ['Full Stack Developer', 'Editor', 'Gamer']
 
