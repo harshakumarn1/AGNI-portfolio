@@ -27,8 +27,8 @@ export default function SectionHeader({ title, subtitle, className = '' }) {
         scrollTrigger: {
           trigger: el,
           start: 'top 88%',
-          end: 'top 45%',
-          toggleActions: 'play none none reverse',
+          end: 'bottom 10%',
+          toggleActions: 'play reverse play reverse',
         },
       })
 

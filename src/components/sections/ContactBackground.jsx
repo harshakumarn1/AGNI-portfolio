@@ -15,7 +15,8 @@ export default function ContactBackground({ sectionRef }) {
 
   useScrollFrames(canvasRef, sectionRef, {
     frameCount: 90,
-    framePath: '/contact-frames/ezgif-frame-',
+    framePath: '/contact-frames/frame-',
+    extension: 'webp',
     pin: false,
     scrollStart: 'top center',
     scrollEnd: 'bottom bottom',

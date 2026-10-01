@@ -25,24 +25,27 @@ export default function Testimonials() {
   useEffect(() => {
     if (!sectionRef.current) return
 
-    gsap.fromTo(
-      sectionRef.current.querySelector('.testimonials-carousel'),
-      { opacity: 0, y: 60, scale: 0.92 },
-      {
-        opacity: 1,
-        y: 0,
-        scale: 1,
-        duration: 1,
-        ease: 'power4.out',
-        scrollTrigger: {
-          trigger: sectionRef.current,
-          start: 'top 78%',
-          toggleActions: 'play none none reverse',
-        },
-      }
-    )
+    const ctx = gsap.context(() => {
+      gsap.fromTo(
+        sectionRef.current.querySelector('.testimonials-carousel'),
+        { opacity: 0, y: 60, scale: 0.92 },
+        {
+          opacity: 1,
+          y: 0,
+          scale: 1,
+          duration: 1,
+          ease: 'power4.out',
+          scrollTrigger: {
+            trigger: sectionRef.current,
+            start: 'top 78%',
+            end: 'bottom 15%',
+            toggleActions: 'play reverse play reverse',
+          },
+        }
+      )
+    }, sectionRef)
 
-    return () => ScrollTrigger.getAll().forEach((t) => t.kill())
+    return () => ctx.revert()
   }, [])
 
   const t = testimonials[current]

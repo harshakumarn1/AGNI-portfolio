@@ -48,8 +48,8 @@ export default function Projects() {
           scrollTrigger: {
             trigger: card,
             start: 'top 82%',
-            end: 'top 30%',
-            toggleActions: 'play none none reverse',
+            end: 'bottom 15%',
+            toggleActions: 'play reverse play reverse',
           },
         })
 

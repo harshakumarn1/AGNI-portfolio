@@ -24,24 +24,27 @@ export default function Contact() {
   useEffect(() => {
     if (!sectionRef.current) return
 
-    gsap.fromTo(
-      sectionRef.current.querySelectorAll('.form-group, .submit-btn, .contact-header'),
-      { opacity: 0, y: 30 },
-      {
-        opacity: 1,
-        y: 0,
-        duration: 0.6,
-        stagger: 0.1,
-        ease: 'power3.out',
-        scrollTrigger: {
-          trigger: sectionRef.current,
-          start: 'top 75%',
-          toggleActions: 'play none none reverse',
-        },
-      }
-    )
+    const ctx = gsap.context(() => {
+      gsap.fromTo(
+        sectionRef.current.querySelectorAll('.form-group, .submit-btn, .contact-header'),
+        { opacity: 0, y: 30 },
+        {
+          opacity: 1,
+          y: 0,
+          duration: 0.6,
+          stagger: 0.1,
+          ease: 'power3.out',
+          scrollTrigger: {
+            trigger: sectionRef.current,
+            start: 'top 75%',
+            end: 'bottom 15%',
+            toggleActions: 'play reverse play reverse',
+          },
+        }
+      )
+    }, sectionRef)
 
-    return () => ScrollTrigger.getAll().forEach((t) => t.kill())
+    return () => ctx.revert()
   }, [])
 
   const validateField = (name, value) => {

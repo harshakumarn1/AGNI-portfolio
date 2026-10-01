@@ -15,7 +15,8 @@ export default function SkillsBackground({ sectionRef }) {
 
   useScrollFrames(canvasRef, sectionRef, {
     frameCount: 99,
-    framePath: '/skills-frames/ezgif-frame-',
+    framePath: '/skills-frames/frame-',
+    extension: 'webp',
     pin: false,
     scrollStart: 'top center',
     scrollEnd: 'bottom bottom',

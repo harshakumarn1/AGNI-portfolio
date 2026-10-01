@@ -11,8 +11,9 @@ export default function HeroBackground({ sectionRef }) {
   const canvasRef = useRef(null)
 
   useScrollFrames(canvasRef, sectionRef, {
-    frameCount: 86,
-    framePath: '/hero-frames/ezgif-frame-',
+    frameCount: 117,
+    framePath: '/hero-frames/frame-',
+    extension: 'webp',
     pin: true,
     scrollStart: 'top top',
     scrollEnd: '+=300%',

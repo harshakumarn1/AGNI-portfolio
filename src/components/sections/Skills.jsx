@@ -43,10 +43,10 @@ export default function Skills() {
             scrollTrigger: {
               trigger: card,
               start: 'top 85%',
-              end: 'top 50%',
-              toggleActions: 'play none none reverse',
+              end: 'bottom 15%',
+              toggleActions: 'play reverse play reverse',
             },
-            delay: i * 0.1,
+            delay: i * 0.08,
           }
         )
       })

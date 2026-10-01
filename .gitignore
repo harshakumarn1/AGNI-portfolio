@@ -8,3 +8,4 @@ dist/
 *.zip
 **/frames_temp/
 src/bgAnimations/
+public/_backup_jpg_frames/

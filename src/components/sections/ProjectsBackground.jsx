@@ -15,10 +15,11 @@ export default function ProjectsBackground({ sectionRef }) {
 
   useScrollFrames(canvasRef, sectionRef, {
     frameCount: 62,
-    framePath: '/projects-frames/ezgif-frame-',
+    framePath: '/projects-frames/frame-',
+    extension: 'webp',
     pin: false,
-    scrollStart: 'top center',
-    scrollEnd: 'bottom bottom',
+    scrollStart: 'top 85%',
+    scrollEnd: 'bottom 15%',
   })
 
   return (

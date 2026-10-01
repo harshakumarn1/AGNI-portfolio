@@ -27,7 +27,8 @@ gsap.registerPlugin(ScrollTrigger)
 export default function useScrollFrames(canvasRef, sectionRef, config = {}) {
   const {
     frameCount = 147,
-    framePath = '/hero-frames/ezgif-frame-',
+    framePath = '/hero-frames/frame-',
+    extension = 'webp',
     pin = true,
     scrub = 0.5,
     scrollStart = 'top top',
@@ -39,6 +40,7 @@ export default function useScrollFrames(canvasRef, sectionRef, config = {}) {
 
   const imagesRef = useRef([])
   const currentFrameRef = useRef(0)
+  const targetFrameRef = useRef(0)
   const loadedCountRef = useRef(0)
 
   /**
@@ -48,9 +50,33 @@ export default function useScrollFrames(canvasRef, sectionRef, config = {}) {
   const render = useCallback((frameIndex) => {
     const canvas = canvasRef.current
     const ctx = canvas?.getContext('2d')
-    const img = imagesRef.current[frameIndex]
+    if (!ctx || !canvas) return
 
-    if (!ctx || !img || !img.complete || img.naturalWidth === 0) return
+    const clampedIndex = Math.max(0, Math.min(frameCount - 1, frameIndex))
+    targetFrameRef.current = clampedIndex
+
+    // Check if target frame is loaded; if not, fallback to nearest available frame
+    let img = imagesRef.current[clampedIndex]
+    if (!img || !img.complete || img.naturalWidth === 0) {
+      for (let offset = 1; offset < frameCount; offset++) {
+        const prev = imagesRef.current[clampedIndex - offset]
+        if (prev && prev.complete && prev.naturalWidth > 0) {
+          img = prev
+          break
+        }
+        const next = imagesRef.current[clampedIndex + offset]
+        if (next && next.complete && next.naturalWidth > 0) {
+          img = next
+          break
+        }
+      }
+      // If absolutely no frame has loaded yet, wait for first frame
+      if (!img || !img.complete || img.naturalWidth === 0) return
+    }
+
+    // Enable high-quality smoothing for crisp, anti-aliased visual rendering
+    ctx.imageSmoothingEnabled = true
+    ctx.imageSmoothingQuality = 'high'
 
     ctx.clearRect(0, 0, canvas.width, canvas.height)
 
@@ -73,8 +99,8 @@ export default function useScrollFrames(canvasRef, sectionRef, config = {}) {
       ctx.drawImage(img, drawX, drawY, drawW, drawH)
     }
 
-    currentFrameRef.current = frameIndex
-  }, [canvasRef, nativeSize])
+    currentFrameRef.current = clampedIndex
+  }, [canvasRef, nativeSize, frameCount])
 
   /**
    * Size the canvas to match its container, accounting for device pixel ratio.
@@ -102,7 +128,7 @@ export default function useScrollFrames(canvasRef, sectionRef, config = {}) {
     }
 
     // Redraw the current frame at the new size
-    render(currentFrameRef.current)
+    render(targetFrameRef.current)
   }, [canvasRef, render, nativeSize, nativeWidth, nativeHeight])
 
   useEffect(() => {
@@ -113,22 +139,31 @@ export default function useScrollFrames(canvasRef, sectionRef, config = {}) {
     const images = []
     let scrollTriggerInstance = null
 
-    // Builds a zero-padded frame URL, e.g. index 0 → "<framePath>001.jpg"
+    // Builds a zero-padded frame URL, e.g. index 0 → "<framePath>001.webp"
     const getFrameSrc = (index) =>
-      `${framePath}${String(index + 1).padStart(3, '0')}.jpg`
+      `${framePath}${String(index + 1).padStart(3, '0')}.${extension}`
 
-    // --- 1. Preload all frames ---
+    // --- 1. Preload all frames with prioritized scheduling ---
     for (let i = 0; i < frameCount; i++) {
       const img = new Image()
+      
+      // Prioritize initial frames for instant load and immediate scroll readiness
+      if ('fetchPriority' in img) {
+        img.fetchPriority = i === 0 ? 'high' : i < 15 ? 'auto' : 'low'
+      }
+
       img.src = getFrameSrc(i)
 
       img.onload = () => {
         loadedCountRef.current++
 
         // Draw the very first frame as soon as it's ready
-        if (i === 0) {
+        if (i === 0 && targetFrameRef.current === 0) {
           resizeCanvas()
           render(0)
+          ScrollTrigger.refresh()
+        } else if (targetFrameRef.current === i || Math.abs(targetFrameRef.current - i) <= 1) {
+          render(targetFrameRef.current)
         }
       }
 
@@ -154,9 +189,11 @@ export default function useScrollFrames(canvasRef, sectionRef, config = {}) {
         scrub,                      // Smooth catch-up (seconds)
         pin,                        // Pin the section while animating (hero only)
         anticipatePin: pin ? 1 : 0, // Smooth pin entry when pinning
+        invalidateOnRefresh: true,  // Recalculate accurately on orientation / resize
       },
       onUpdate: () => {
-        const frameIndex = Math.round(frameObj.value)
+        const frameIndex = Math.max(0, Math.min(frameCount - 1, Math.round(frameObj.value)))
+        targetFrameRef.current = frameIndex
         // Only redraw if the frame actually changed
         if (frameIndex !== currentFrameRef.current) {
           render(frameIndex)
@@ -183,6 +220,7 @@ export default function useScrollFrames(canvasRef, sectionRef, config = {}) {
     resizeCanvas,
     frameCount,
     framePath,
+    extension,
     pin,
     scrub,
     scrollStart,

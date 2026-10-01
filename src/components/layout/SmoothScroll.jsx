@@ -22,11 +22,16 @@ export default function SmoothScroll({ children }) {
     // Integrate Lenis with GSAP ScrollTrigger
     lenis.on('scroll', ScrollTrigger.update)
 
-    gsap.ticker.add((time) => {
+    const updateTicker = (time) => {
       lenis.raf(time * 1000)
-    })
-
+    }
+    gsap.ticker.add(updateTicker)
     gsap.ticker.lagSmoothing(0)
+
+    // Initial trigger position recalculation
+    const refreshTimer = setTimeout(() => {
+      ScrollTrigger.refresh()
+    }, 200)
 
     // Handle anchor links
     document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
@@ -40,8 +45,9 @@ export default function SmoothScroll({ children }) {
     })
 
     return () => {
+      clearTimeout(refreshTimer)
       lenis.destroy()
-      gsap.ticker.remove(lenis.raf)
+      gsap.ticker.remove(updateTicker)
     }
   }, [])
 
