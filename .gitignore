@@ -1,6 +1,7 @@
 .env
 node_modules/
 dist/
+_backup_jpg_frames
 **/.DS_Store
 *.local
 
