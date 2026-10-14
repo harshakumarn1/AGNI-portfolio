@@ -79,7 +79,7 @@ export default function AboutModal({ isOpen, onClose }) {
               <div className="modal-header-info">
                 <h2 className="modal-profile-name">{personalInfo.name}</h2>
                 <p className="modal-profile-role">
-                  Full Stack Web Developer <span className="modal-role-divider">•</span> Content Creator
+                  Full Stack Developer
                 </p>
               </div>
             </div>
@@ -174,10 +174,10 @@ export default function AboutModal({ isOpen, onClose }) {
                   <div className="modal-hobby-card">
                     <div className="modal-hobby-header">
                       <span className="modal-hobby-emoji">🎮</span>
-                      <span className="modal-hobby-title">BGMI & Esports</span>
+                      <span className="modal-hobby-title">BGMI Player</span>
                     </div>
                     <p className="modal-hobby-desc">
-                      Tactical mobile gaming, strategic teamwork, and competitive play.
+                      Passionate BGMI player enjoying tactical mobile gaming and strategic teamwork.
                     </p>
                   </div>
 

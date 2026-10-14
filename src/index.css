@@ -2179,7 +2179,7 @@ input, textarea { font-family: inherit; font-size: inherit; color: inherit; }
     text-align: center;
   }
   .hero-buttons { justify-content: center; }
-  .hero-photo-wrapper { order: -1; }
+  .hero-photo-wrapper { display: none; }
   .hero-photo-3d { max-width: 320px; transform: none; }
   .hero-bg-canvas {
     transform: scale(1.3);
@@ -2220,12 +2220,13 @@ input, textarea { font-family: inherit; font-size: inherit; color: inherit; }
   .navbar-logo img { width: 5.5rem; }
   .social-icon { width: 36px; height: 36px; }
   .social-icon svg { width: 17px; height: 17px; }
-  .hero { padding: 5.75rem 1.25rem 2.5rem; min-height: auto; }
+  .hero { padding: 5.75rem 1.25rem 2.5rem; min-height: 100vh; justify-content: center; }
   .hero-photo-wrapper { margin-top: -1.25rem; }
   .hero-photo-3d { max-width: 192px; }
   .hero-bg-canvas {
-    transform: scale(1.7);
-    transform-origin: center center;
+    top: 50%;
+    transform: scale(1.7) translateY(-50%);
+    transform-origin: center top;
   }
   .hero-buttons {
     flex-direction: row;
